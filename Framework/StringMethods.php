@@ -20,7 +20,7 @@ class StringMethods{
 		return self::$_delimiter.trim($pattern,self::$_delimiter).self::$_delimiter;
 	}
 
-	public static function match($string,$pattern){
+	public static function match($string,$pattern):Array{
 		preg_match_all(self::_normalize($pattern),$string,$matches,PREG_PATTERN_ORDER);
 		if(!empty($matches[1])){
 			return $matches[1];
@@ -28,7 +28,7 @@ class StringMethods{
 		if(!empty($matches[0])){
 			return $matches[0];
 		}
-		return null;
+		return [];
 	}
 	
 	public static function split($string,$pattern,$limit=null){
