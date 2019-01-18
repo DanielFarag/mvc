@@ -3,7 +3,7 @@
 ## This is my **MVC** framework [FW] built using **PHP**.
 
 This project will satisfy the following requirements.
--[ ] will be able to handle any request.
+- [ ] will be able to handle any request
 	- [ ] Parse URL, Body and Header.
 	- [ ] Identify the HTTP Method used to perform the request (GET, POST, DELETE, UPDATE).
 	- [ ] Gather all the parameters attached to the request by URL, Request Body or Request Header.
@@ -14,24 +14,25 @@ This project will satisfy the following requirements.
 		-[ ] Plain text 
 		-[ ] XML 
 		-[ ] JSON
--[ ] Database connectore
+- [ ] Database connectore
 	- [ ] Ability to use multiple DB driver into the project.
 		- [ ] MySql
 		- [ ] Sql Server
 	- [ ] Ability to retrieve data from database by building a query using php functions.
 	- [ ] Build simple ORM framework.
 	
--[ ] Cache System
+- [ ] Cache System
 	- [ ] Ability to use multiple Cache System.
 		- [ ] Memcached
 		- [ ] Redis
--[ ] Session System
+- [ ] Session System
 	- [ ] Ability to use multiple session handler driver.
 		- [ ] Filebase
 		- [ ] Database
--[ ] Configuration System
+- [ ] Configuration System
 	- [ ] Ability to use muliple Configuration Parse System.
 		- [ ] INI
 		- [ ] Array
 		- [ ] plain text.
--[ ] Create an Event based system
+- [ ] Create an Event based system
+
