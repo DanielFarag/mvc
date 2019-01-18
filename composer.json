@@ -1,0 +1,18 @@
+{
+    "name": "daniel/mvc",
+    "description": "PHP MVC framework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Daniel Farag",
+            "email": "danielfarag146@gmail.com"
+        }
+    ],
+    "require": {},
+	"autoload":{
+		"psr-4":{
+			"App\\":"app/",
+			"Framework\\":"framework/"
+		}
+	}
+}
