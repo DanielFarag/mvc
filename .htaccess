@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+RewriteRule ^([a-zA-Z0-9\/\-_]*)\.?([a-zA-Z]*)?$ Public/index.php?url=$1&extension=$2&extension=%{REQUEST_URI} [QSA,L]
