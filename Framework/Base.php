@@ -14,7 +14,7 @@ class Base{
 		// Assign options inserted thought constructor to the protected properties into the class
 		// By using a magic method __set(called as public $this->property ) && __call(called as function $this->setProperty()))
 		if(is_array($options) || is_object($options)){
-			foreach($options as $option){
+			foreach($options as $option=>$value){
 				$key = ucfirst($option);
 				$method = "set{$key}";
 				$this->$method($value);
@@ -34,7 +34,8 @@ class Base{
 			$property = "_{$normalized}";
 			if(property_exists($this,$property)){
 				$meta = $this->_inspector->getPropertyMeta($property);
-				if(empty($meta['@readwrite'])&&empty($meta['@read'])){
+
+				if(empty($meta['@readwrite']) && empty($meta['@read'])){
 					throw new \Exception("getExceptionForWriteOnly");
 				}
 				if(isset($this->$property)){

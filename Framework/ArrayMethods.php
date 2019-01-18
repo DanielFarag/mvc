@@ -16,4 +16,15 @@ class ArrayMethods{
 			return trim($item);
 		},$array);
 	}
+	public static function toObject(Array $array){
+		$results = new \stdClass;
+		foreach($array as $key=>$value){
+			if(is_array($value)){
+				$results->{$key}= self::toObject($value);
+			}else{
+				$results->{$key} = $value;
+			}
+		}
+		return $results;
+	}
 }
