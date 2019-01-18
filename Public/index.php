@@ -1,3 +1,5 @@
 <?php
 
-var_dump($_GET);
+define("APP_PATH",dirname(dirname(__FILE__)));
+
+require APP_PATH . '/vendor/autoload.php';
