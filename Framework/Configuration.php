@@ -19,6 +19,9 @@ class Configuration extends Base{
 			case "ini":
 				return new Configuration\Driver\Ini(['options'=>$this->options]);
 			break;
+			case "array":
+				return new Configuration\Driver\Parray(['options'=>$this->options]);
+			break;
 			default:
 				throw new \Exception("Invalid Type");
 			break;

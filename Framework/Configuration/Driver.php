@@ -2,7 +2,7 @@
 namespace Framework\Configuration;
 use Framework\Base;
 
-class Driver extends Base{
+abstract class Driver extends Base{
 	/**
 	*	@readwrite
 	*/
@@ -16,4 +16,6 @@ class Driver extends Base{
 	public function initialize(){
 		return $this;
 	}
+	
+	abstract public function parse(String $path);
 }

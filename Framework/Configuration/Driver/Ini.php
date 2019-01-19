@@ -5,7 +5,7 @@ use Framework\Base;
 use Framework\StringMethods;
 use Framework\ArrayMethods;
 class Ini extends Driver{
-	public function parse($path){
+	public function parse(String $path){
 		
 		if(!file_exists($path)){
 			throw new \Exception("$path doesn't exist");
