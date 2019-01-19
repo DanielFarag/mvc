@@ -31,8 +31,8 @@ This project will satisfy the following requirements.
 		- [ ] Database
 - [ ] Configuration System
 	- [ ] Ability to use muliple Configuration Parse System.
-		- [ ] INI
-		- [ ] Array
+		- [x] INI
+		- [x] Array
 		- [ ] plain text.
 - [ ] Create an Event based system
 
