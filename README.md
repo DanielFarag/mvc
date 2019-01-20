@@ -33,6 +33,8 @@ This project will satisfy the following requirements.
 	- [ ] Ability to use muliple Configuration Parse System.
 		- [x] INI
 		- [x] Array
+		- [ ] JSON
+		- [ ] XML
 		- [ ] plain text.
 - [ ] Create an Event based system
 
