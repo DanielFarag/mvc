@@ -10,10 +10,10 @@ This project will satisfy the following requirements.
 	- [ ] Apply constraints ( Authentication, Autherization, Once, Private .... ) before performing the request.
 	- [ ] Run request Handler Method.
 	- [ ] Feed the user with the desired response formate
-		-[ ] Html
-		-[ ] Plain text 
-		-[ ] XML 
-		-[ ] JSON
+		- [ ] Html
+		- [ ] Plain text 
+		- [ ] XML 
+		- [ ] JSON
 - [ ] Database connectore
 	- [ ] Ability to use multiple DB driver into the project.
 		- [ ] MySql
