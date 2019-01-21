@@ -6,13 +6,8 @@ use Framework\ArrayMethods;
 class Parray extends Driver{
 	public function parse(String $path){
 		
-		if(!file_exists($path)){
-			throw new \Exception("$path doesn't exist");
-		} 
+		parent::CheckFileExtension($path);
 		
-		if(count(StringMethods::match($path,'\.php'))<=0){
-			throw new \Exception("$path is not a .php file asd");
-		}
 		if(empty($this->_parsed[$path])){
 			ob_start();
 			$array = require($path);
@@ -22,6 +17,7 @@ class Parray extends Driver{
 			}
 			$this->_parsed[$path]=ArrayMethods::toObject($array);
 		}
+		
 		return $this->_parsed[$path];
 	}
 }

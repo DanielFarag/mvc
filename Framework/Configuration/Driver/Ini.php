@@ -1,18 +1,13 @@
 <?php
 namespace Framework\Configuration\Driver;
 use Framework\Configuration\Driver;
-use Framework\Base;
 use Framework\StringMethods;
 use Framework\ArrayMethods;
 class Ini extends Driver{
 	public function parse(String $path){
 		
-		if(!file_exists($path)){
-			throw new \Exception("$path doesn't exist");
-		} 
-		if(count(StringMethods::match($path,'\.ini$'))<=0){
-			throw new \Exception("$path it's not a .ini file asd");
-		}
+		parent::CheckFileExtension($path);
+
 		if(!isset($this->parsed[$path])){
 			$config = [];
 			$iniArray = parse_ini_file($path);

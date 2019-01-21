@@ -5,13 +5,8 @@ use Framework\StringMethods;
 class Json extends Driver{
 	
 	public function parse(String $path){
-		if(!file_exists($path)){
-			throw new \Exception("$path doesn't exist");
-		} 
-
-		if(count(StringMethods::match($path,'\.json$'))<=0){
-			throw new \Exception("$path it's not a .ini file asd");
-		}
+		
+		parent::CheckFileExtension($path);
 		
 		if(empty($this->_parsed[$path])){
 			$file = file_get_contents($path);

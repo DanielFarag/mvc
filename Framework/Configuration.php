@@ -1,5 +1,6 @@
 <?php
 namespace Framework;
+use Framework\Configuration\Driver;
 class Configuration extends Base{
 	/**
 	*	@readwrite
@@ -9,21 +10,26 @@ class Configuration extends Base{
 	/**
 	*	@readwrite
 	*/
+	protected $_extension;
+	
+	/**
+	*	@readwrite
+	*/
 	protected $_options;
 	
-	public function initialize(){
+	public function initialize():Driver{
 		if(!$this->type){
 			throw new \Exception("Invalid Type");
 		}
 		switch($this->type){
 			case "ini":
-				return new Configuration\Driver\Ini(['options'=>$this->options]);
+				return new Configuration\Driver\Ini(['extension'=>'ini','options'=>$this->options]);
 			break;
 			case "array":
-				return new Configuration\Driver\Parray(['options'=>$this->options]);
+				return new Configuration\Driver\Parray(['extension'=>'php','options'=>$this->options]);
 			break;
 			case "json":
-				return new Configuration\Driver\Json(['options'=>$this->options]);
+				return new Configuration\Driver\Json(['extension'=>'json','options'=>$this->options]);
 			break;
 			default:
 				throw new \Exception("Invalid Type");
