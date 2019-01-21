@@ -22,6 +22,9 @@ class Configuration extends Base{
 			case "array":
 				return new Configuration\Driver\Parray(['options'=>$this->options]);
 			break;
+			case "json":
+				return new Configuration\Driver\Json(['options'=>$this->options]);
+			break;
 			default:
 				throw new \Exception("Invalid Type");
 			break;
