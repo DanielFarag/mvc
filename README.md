@@ -34,7 +34,7 @@ This project will satisfy the following requirements.
 		- [x] INI
 		- [x] Array
 		- [x] JSON
-		- [ ] XML
+		- [x] XML
 		- [ ] plain text.
 - [ ] Create an Event based system
 

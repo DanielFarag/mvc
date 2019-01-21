@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+	<driver type="mysql" default="true">
+			<host>localhost</host>
+			<database>ecommerce</database>
+			<user>root</user>
+			<password>123456</password>
+	</driver>
+	<driver type="sqlsrv">
+		<host>localhost</host>
+		<database>ecommerce</database>
+		<user>root</user>
+		<password>123456</password>
+	</driver>
+</database>

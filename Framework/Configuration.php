@@ -31,6 +31,9 @@ class Configuration extends Base{
 			case "json":
 				return new Configuration\Driver\Json(['extension'=>'json','options'=>$this->options]);
 			break;
+			case "xml":
+				return new Configuration\Driver\Xml(['extension'=>'xml','options'=>$this->options]);
+			break;
 			default:
 				throw new \Exception("Invalid Type");
 			break;
