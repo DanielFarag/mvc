@@ -16,9 +16,9 @@ This project will satisfy the following requirements.
 		- [ ] JSON
 - [ ] Database connectore
 	- [ ] Ability to use multiple DB driver into the project.
-		- [ ] MySql
+		- [x] MySql
 		- [ ] Sql Server
-	- [ ] Ability to retrieve data from database by building a query using php functions.
+	- [x] Ability to retrieve data from database by building a query using php functions.
 	- [ ] Build simple ORM framework.
 	
 - [ ] Cache System
