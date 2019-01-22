@@ -55,7 +55,7 @@ class Base{
 				if(empty($meta['@readwrite']) && empty($meta['@write'])){
 					throw new \Exception("getExceptionForReadOnly");
 				}
-				$this->{$property} = $arguments[0];
+				$this->{$property} = is_callable($arguments[0])?$arguments[0]():$arguments[0];
 				return $this;
 			}
 		}
