@@ -6,9 +6,9 @@ This project will satisfy the following requirements.
 - [ ] will be able to handle any request
 	- [ ] Parse URL, Body and Header.
 	- [ ] Identify the HTTP Method used to perform the request (GET, POST, DELETE, PUT).
-	- [ ] Gather all the parameters attached to the request by URL, Request Body or Request Header.
+	- [x] Gather all the parameters attached to the request by URL, Request Body or Request Header.
 	- [ ] Apply constraints ( Authentication, Autherization, Once, Private .... ) before performing the request.
-	- [ ] Run request Handler Method.
+	- [x] Run request Handler Method.
 	- [ ] Feed the user with the desired response formate
 		- [ ] Html
 		- [ ] Plain text 
