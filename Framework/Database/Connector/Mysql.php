@@ -32,5 +32,26 @@ class Mysql extends Connector{
 	public function query():Query{
 		return new Query\Mysql(["connector"=>$this]);
 	}
+	
+	public function execute(String $sql){
+		$this->_isValidService();
+		
+		return $this->service->query($sql);
+	}
+	
+	public function escape($value){
+		$this->_isValidService();
+		return $this->service->quote($value);
+	}
+	
+	public function getLastInserted(){
+		$this->_isValidService();
+		return $this->service->lastInsertId();
+	}
+	
+	public function getLastError(){
+		$this->_isValidService();
+		return $this->service->errorInfo();
+	}
 
 }

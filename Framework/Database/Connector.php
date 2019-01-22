@@ -71,25 +71,12 @@ abstract class Connector extends Base{
 	
 	abstract public function query():Query;
 	
-	public function execute(String $sql){
-		$this->_isValidService();
-		
-		return $this->service->query($sql);
-	}
+	abstract public function execute(String $sql);
 	
-	public function escape($value){
-		$this->_isValidService();
-		return $this->service->quote($value);
-	}
+	abstract public function escape($value);
 	
-	public function getLastInserted(){
-		$this->_isValidService();
-		return $this->service->lastInsertId();
-	}
+	abstract public function getLastInserted();
 	
-	public function getLastError(){
-		$this->_isValidService();
-		return $this->service->errorInfo();
-	}
+	abstract public function getLastError();
 
 }
