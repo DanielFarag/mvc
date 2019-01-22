@@ -7,3 +7,6 @@ function dd($array){
 define("APP_PATH",dirname(dirname(__FILE__)));
 
 require APP_PATH . '/vendor/autoload.php';
+$request = new Framework\Request;
+$request->initialize();
+echo $request->getRequestMethod();
