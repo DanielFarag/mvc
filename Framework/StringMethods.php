@@ -31,9 +31,18 @@ class StringMethods{
 		return [];
 	}
 	
+	public static function matchAll($string,$pattern,&$matches = []):Array{
+		preg_match_all(self::_normalize($pattern),$string,$matches);
+		return $matches;
+	}
+	
 	public static function split($string,$pattern,$limit=null){
 		$flags = PREG_SPLIT_NO_EMPTY|PREG_SPLIT_DELIM_CAPTURE;
 		return preg_split(self::_normalize($pattern),$string,$limit,$flags);
+	}
+	
+	public static function replace($string,$pattern,$to){
+		return preg_replace(self::_normalize($pattern),$to,$string);
 	}
 	
 }

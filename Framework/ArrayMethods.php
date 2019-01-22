@@ -27,4 +27,15 @@ class ArrayMethods{
 		}
 		return $results;
 	}
+	public static function flatten(Array $array,Array $return = []):Array{
+
+		foreach ($array as $key => $value){
+			if(is_array($value)|| is_object($value)){
+				$return = self::flatten($value,$return);
+			}else{
+				$return[] =$value;
+			}
+		}
+		return $return;
+	}
 }
