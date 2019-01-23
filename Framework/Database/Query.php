@@ -50,7 +50,6 @@ abstract class Query extends Base{
 	*/
 	protected $_where = [];
 	
-	
 	public function from($from,$fields = ['*']){
 		if(empty($from)){
 			throw new \Exception("Invalid argument");
@@ -262,8 +261,7 @@ abstract class Query extends Base{
 		$limit = $this->_limit;
 		$offset =$this->_offset;
 		$this->limit(1);
-		$first = $this->all();
-		
+		$first = $this->all()[0];
 		if($limit){
 			$this->_limit =$limit;
 		}

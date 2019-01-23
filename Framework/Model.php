@@ -25,92 +25,34 @@ class Model extends Base{
 		"datetime"
 	];
 	
-	/**
-	* @column
-	* @readwrite
-	* @primary
-	* @type autonumber
-	* @validate integer,unique-users-id
-	*/
-	protected $_id;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type text
-	* @length 50
-	* @label FirstName	
-	* @index
-	*/
-	protected $_f_name;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type text
-	* @length 50
-	* @label LastNAme	
-	* @index
-	*/
-	protected $_l_name;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type text
-	* @length 64
-	* @label Email	
-	* @index
-	*/
-	protected $_email;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type text
-	* @length 64
-	* @label Password
-	*/
-	protected $_password;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type datetime
-	* @label CreatedAt
-	*/
-	protected $_created_at;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type datetime
-	* @label UpdatedAt	
-	*/
-	protected $_updated_at;
-	
-	/**
-	* @column
-	* @readwrite
-	* @type datetime
-	* @label DeletedAt
-	*/
-	protected $_deleted_at;	
-	
-	/**
-	* @column
-	* @readwrite
-	* @type boolean
-	* @label Active
-	*/
-	protected $_active;
-	
 	protected $_columns;
 	protected $_primary;
 	
+	public function __construct($options = []){
+		parent::__construct($options);
+		$this->load();
+	}
+	public function load(){
+		$primary = $this->primaryColumn;
+		$raw = $primary['raw'];
+		$name = $primary['name'];
+		if(!empty($this->$raw)){
+			$previous = $this->connector->query()->from($this->table)->where("{$name}=?",$this->$raw)->first();
+			if($previous==null){
+				throw new \Exception("Primary key value invalid");
+			}
+			foreach($previous as $key=>$value){
+				$prop = "_{$key}";
+				if(!empty($previous->$key) && !isset($this->$prop)){
+					$this->$key = $previous->$key;
+				}
+			}
+		}
+	}
 	public function getTable(){
 		if(empty($this->_table)){
-			$this->_table = strtolower(get_class($this));
+			$table = new \ReflectionClass(get_class($this));
+			$this->_table=strtolower($table->getShortName());
 		}
 		return $this->_table;
 	}

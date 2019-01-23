@@ -126,10 +126,16 @@ abstract class Connector extends Base{
 		$table=$table->getShortName();
 		$sql = sprintf($template,$table,join(','.PHP_EOL,$lines),join(','.PHP_EOL,$indices),$this->_engine,$this->_charset);
 		$path = \Framework\Path::Database('CREATE_TABLE_'.$table.'_'.date('Y_M_d_H_i_s').'.sql');
-		$file = fopen($path,"w");
-		fwrite($file,$sql);
-		fclose($file);
-		echo '<b>Created at</b>: '.$path;
+		
+		try{
+			$file = fopen($path,"w");
+			fwrite($file,$sql);
+			fclose($file);
+		}catch(\Exception $ex){
+			return false;
+		}
+		
+		return true;
 	}
 }
 
