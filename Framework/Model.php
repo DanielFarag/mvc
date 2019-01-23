@@ -60,6 +60,7 @@ class Model extends Base{
 		}
 		$data =[];
 		foreach($this->columns as $key=>$column){
+			// Read Only Property can't be accessed using getProperty function
 			if(!$column['read']){
 				$prop = $column["raw"];
 				$data[$key] = $this->$prop;
@@ -77,7 +78,24 @@ class Model extends Base{
 		}
 		return $result;
 	}
-	
+	public function delete(){
+		$primary = $this->primaryColumn;
+		$raw = $primary["raw"];
+		$name = $primary["name"];
+		if(!empty($this->$raw)){
+			return $this->connector->query()->from($this->table)->where("{$name}=?",$this->$raw)->delete();
+		}
+	}
+	public static function deleteAll($where=[]){
+		$instance = new static([
+			'connector'=>Registry::get('database')
+		]);
+		$query = $instance->connector->query()->from($instance->table);
+		foreach($where as $clause=>$value){
+			$query->where($clause,$value);
+		}
+		return $query->delete();
+	}
 	public function getTable(){
 		if(empty($this->_table)){
 			$table = new \ReflectionClass(get_class($this));

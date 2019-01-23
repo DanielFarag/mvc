@@ -199,7 +199,7 @@ abstract class Query extends Base{
 		$parts = join(', ',$parts);
 		$_where = $this->where;
 		if(!empty($_where)){
-			$joined = join(', ',$_where);
+			$joined = join('AND ',$_where);
 			$where = "WHERE {$joined}";
 		}
 		$_limit = $this->limit;
@@ -216,7 +216,7 @@ abstract class Query extends Base{
 		
 		$_where = $this->where;
 		if(!empty($_where)){
-			$joined =join(", ",$_where);
+			$joined =join("AND ",$_where);
 			$where = "WHERE {$joined}";
 		}
 		
@@ -249,7 +249,6 @@ abstract class Query extends Base{
 		$sql = $this->_buildDelete();
 		echo $sql;
 		$result = $this->connector->execute($sql);
-		
 		if($result===false){
 			throw new \Exception("Can't delete the record");
 		}

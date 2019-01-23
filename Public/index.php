@@ -47,10 +47,9 @@ class Books extends Framework\Model{
 	*/
 	protected $_publisher;
 };
-$model = new Books([
-	'connector'=>Framework\Registry::get('database'),
+$model = Books::deleteAll([
+	'id=?'=>'10',
+	'title=?'=>'dsadasd'
 ]);
-$model->iSBN='123-4567-890-11';
-$model->title='My New Title';
-$model->publisher=2;
-dd($model->save());
+dd($model);
+//dd($model->delete());
