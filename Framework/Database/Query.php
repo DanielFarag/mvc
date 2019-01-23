@@ -130,6 +130,7 @@ abstract class Query extends Base{
 		$where = $order = $limit = $join = "";
 		$template = "SELECT %s FROM %s %s %s %s %s";
 		
+		// Create the retrieved fields
 		foreach($this->fields as $table=>$_fields){
 			foreach($_fields as $field=>$alias){
 				if(is_string($field)){
@@ -140,22 +141,29 @@ abstract class Query extends Base{
 			}
 		}
 		$fields = join(", ",$fields);
+		
+		// Create Join Statement
 		$_join = $this->join;
 		if(!empty($_join)){
 			$join = join(" ",$_join);
 		}
+		
+		// create Where Condition
 		$_where = $this->where;
 		if(!empty($_where)){
 			$joined = join(" AND ",$_where);
 			$where = "WHERE {$joined}";
 		}
-
+		
+		
+		// create Order By  
 		$_order = $this->order;
 		if(!empty($_order)){
 			$_direction = $this->direction;
 			$order= "ORDER BY {$_order} {$_direction}";
 		}
 		
+		// create Limit and apply limit&offset 
 		$_limit = $this->limit;
 		if(!empty($_limit)){
 			$_offset = $this->offset;
@@ -287,7 +295,6 @@ abstract class Query extends Base{
 	
 	public function all(){
 		$sql = $this->_buildSelect();
-		echo $sql;
 		$result = $this->connector->execute($sql);
 		if ($result === false){
 			$error = $this->connector->lastError;

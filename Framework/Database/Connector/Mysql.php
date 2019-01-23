@@ -35,7 +35,6 @@ class Mysql extends Connector{
 	
 	public function execute(String $sql){
 		$this->_isValidService();
-		
 		return $this->service->query($sql);
 	}
 	
