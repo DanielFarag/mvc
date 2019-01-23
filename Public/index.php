@@ -47,9 +47,4 @@ class Books extends Framework\Model{
 	*/
 	protected $_publisher;
 };
-$model = Books::deleteAll([
-	'id=?'=>'10',
-	'title=?'=>'dsadasd'
-]);
-dd($model);
-//dd($model->delete());
+$model = Books::all();
