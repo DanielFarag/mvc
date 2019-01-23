@@ -50,6 +50,7 @@ class Model extends Base{
 			}
 		}
 	}
+	
 	public static function all($where = [],$fields=['*'],$order=null,$direction=null,$limit=null,$page=null){
 		$model = new static();
 		return $model->_all($where,$fields,$order,$direction,$limit,$page);
@@ -71,6 +72,37 @@ class Model extends Base{
 			$rows[] = new $class($row);
 		}
 		return $rows;
+	}
+	
+	public static function count($where = []){
+		$model = new static();
+		return $model->_count($where);
+	}
+	protected function _count($where =[]){
+		$query = $this->connector->query()->from($this->table);
+		foreach($where as $clause=>$value){
+			$query->where($clause,$value);
+		}
+		return $query->count();
+	}
+	public static function first($where = [],$fields=['*'],$order=null,$direction=null,$limit=null,$page=null){
+		$model = new static();
+		return $model->_first($where,$fields,$order,$direction,$limit,$page);
+	}
+	protected function _first($where=[],$fields=['*'],$order=null,$direction=null,$limit=null,$page=null){
+		$query = $this->connector->query()->from($this->table,$fields);
+		foreach($where as $clause => $value){
+			$query->where($clause,$value);
+		}
+		if($order!=null){
+			$query->order($order,$direction);
+		}
+		$first=$query->first();
+		$class = get_class($this);
+		if($first){
+			return new $class($first);
+		}
+		return null;
 	}
 	public function save(){
 		$primary = $this->primaryColumn;

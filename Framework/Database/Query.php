@@ -286,7 +286,7 @@ abstract class Query extends Base{
 		if($offset){
 			$this->_offset = $offset;
 		}
-		return $row[0]->rows;
+		return $row->rows;
 	}
 	
 	public function all(){

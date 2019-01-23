@@ -47,4 +47,5 @@ class Books extends Framework\Model{
 	*/
 	protected $_publisher;
 };
-$model = Books::all();
+$count= Books::first([],['id']);
+dd($count);
