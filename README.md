@@ -19,7 +19,7 @@ This project will satisfy the following requirements.
 		- [x] MySql
 		- [ ] Sql Server
 	- [x] Ability to retrieve data from database by building a query using php functions.
-	- [ ] Build simple ORM framework.
+	- [x] Build simple ORM framework.
 	
 - [ ] Cache System
 	- [ ] Ability to use multiple Cache System.
