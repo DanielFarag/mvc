@@ -48,7 +48,9 @@ class Books extends Framework\Model{
 	protected $_publisher;
 };
 $model = new Books([
-	'connector'=>Framework\Registry::get('database',$mysql),
-	'id'=>2
+	'connector'=>Framework\Registry::get('database'),
 ]);
-dd($model->title);
+$model->iSBN='123-4567-890-11';
+$model->title='My New Title';
+$model->publisher=2;
+dd($model->save());

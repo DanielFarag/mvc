@@ -235,7 +235,6 @@ abstract class Query extends Base{
 		}else{
 			$sql = $this->_buildUpdate($data);
 		}
-		echo $sql;
 		$result =$this->connector->execute($sql);
 		if($result===false){
 			throw new \Exception("Can't create the record");
@@ -243,7 +242,7 @@ abstract class Query extends Base{
 		if($isInsert){
 			return $this->connector->getLastInserted();
 		}
-		return 0;
+		return true;
 	}
 	
 	public function delete(){

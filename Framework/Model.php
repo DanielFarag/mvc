@@ -49,6 +49,35 @@ class Model extends Base{
 			}
 		}
 	}
+	public function save(){
+		$primary = $this->primaryColumn;
+		$raw = $primary['raw'];
+		$name = $primary['name'];
+		$query = $this->connector->query()->from($this->table);
+		// If is not empty, update the current record
+		if(!empty($this->$raw)){
+			$query->where("{$name}=?",$this->$raw);
+		}
+		$data =[];
+		foreach($this->columns as $key=>$column){
+			if(!$column['read']){
+				$prop = $column["raw"];
+				$data[$key] = $this->$prop;
+				continue;
+			}
+			if($column!=$this->primaryColumn && $column){
+				$method = "get".ucfirst($key);
+				$data[$key]= $this->$method();
+				continue;
+			}
+		}
+		$result = $query->save($data);
+		if($result>0){
+			$this->$raw=$result;
+		}
+		return $result;
+	}
+	
 	public function getTable(){
 		if(empty($this->_table)){
 			$table = new \ReflectionClass(get_class($this));
@@ -64,7 +93,6 @@ class Model extends Base{
 		}
 		return $this->_connector;
 	}
-	
 	public function getColumns(){
 		if(empty($this->_columns)){
 			$primaries = 0;
@@ -125,7 +153,6 @@ class Model extends Base{
 		}
 		return $this->_columns;
 	}
-	
 	public function getColumn($name){
 		if(!empty($this->columns[$name])){
 			return $this->columns[$name];
